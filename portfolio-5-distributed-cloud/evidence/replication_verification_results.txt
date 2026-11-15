@@ -1,0 +1,24 @@
+CLINIX STREAMING REPLICATION – VERIFIED OUTPUTS
+Date/time shown by user's test row: 2026-11-15 22:51:21.654554
+
+1. Standby role check, connected to port 5433:
+pg_is_in_recovery
+-------------------
+t
+(1 row)
+
+2. Primary replication status, connected to port 5432:
+application_name | client_addr | state     | sync_state
+walreceiver      | 127.0.0.1   | streaming | async
+(1 row)
+
+3. Test write on primary:
+CREATE TABLE
+INSERT 0 1
+
+4. Test read on standby:
+id | message                                      | created_at
+1  | Clinix streaming replication test successful | 2026-11-15 22:51:21.654554
+(1 row)
+
+Interpretation: the primary accepted the write and the standby returned the same row. These are user-reported terminal results from the practical session. Capture and include screenshots of the three verification commands in the final evidence folder/LMS submission if possible.
